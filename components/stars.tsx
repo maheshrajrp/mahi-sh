@@ -1,13 +1,22 @@
 import { useFrame, useLoader } from "@react-three/fiber"
-import { useMemo } from "react"
+import { useMemo, useRef } from "react"
 import { AdditiveBlending, DoubleSide, TextureLoader } from "three"
+import starFragment from './star-shader/star-fragment.glsl'
+import starVertex from './star-shader/star-vertex.glsl'
+
+const MAX_COUNT = 9000 * 10
 
 export const Stars = () => {
 
+    const materialRef = useRef<any>(null)
 
-    useFrame((state, delta, xrFrame) => {
-
+    useFrame((state) => {
+        const { clock } = state
+        if (materialRef.current) {
+            materialRef.current.uniforms.uTime.value = clock.getElapsedTime()
+        }
     })
+
 
     const textures = useLoader(TextureLoader, [
         'star_1.png',
@@ -20,11 +29,25 @@ export const Stars = () => {
         'star_8.png',
     ])
 
+    const uniforms = useMemo(() => ({
+        uTime: { value: 0 },
+        uTexture: { value: textures[5] }
+    }), [textures])
+
     const points = useMemo(() => {
-        const maxCount = 4000
+        const maxCount = MAX_COUNT
         const tempArr = new Float32Array(maxCount * 3)
         for (let i = 0; i < maxCount * 3; i++) {
             tempArr[i] = (Math.random() - 0.5) * 100
+        }
+        return tempArr
+    }, [])
+
+    const aRandom = useMemo(() => {
+        const maxCount = MAX_COUNT
+        const tempArr = new Float32Array(maxCount)
+        for (let i = 0; i < maxCount; i++) {
+            tempArr[i] = Math.random() * 3
         }
         return tempArr
     }, [])
@@ -33,19 +56,18 @@ export const Stars = () => {
         <points>
             <bufferGeometry>
                 <bufferAttribute attach="attributes-position" args={[points, 3]} />
+                <bufferAttribute attach="attributes-aRandom" args={[aRandom, 1]} />
             </bufferGeometry>
-            <pointsMaterial
-                alphaMap={textures[5]}
-                transparent
-                sizeAttenuation={true}
-                size={0.2}
-                alphaTest={0.001}
+            <shaderMaterial
+                ref={materialRef}
+                vertexShader={starVertex}
+                fragmentShader={starFragment}
                 side={DoubleSide}
-                blending={AdditiveBlending} />
+                transparent
+                blending={AdditiveBlending}
+                uniforms={uniforms}
+            >
+            </shaderMaterial>
         </points>
-        <mesh>
-            <boxGeometry />
-            <meshNormalMaterial />
-        </mesh>
     </>
 }
