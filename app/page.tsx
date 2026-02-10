@@ -1,17 +1,19 @@
 "use client"
-import { CameraControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
 
-export default function Home() {
-  return (
-    <main className="h-full">
-      <Canvas orthographic>
-        <CameraControls />
-        <mesh>
-          <torusKnotGeometry args={[1, 0.4, 100, 16]} />
-          <meshNormalMaterial />
-        </mesh>
-      </Canvas>
-    </main>
-  );
+import { Stars } from '@/components/stars'
+import { CameraControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import * as THREE from 'three'
+
+
+// r150
+THREE.ColorManagement.enabled = true
+
+
+export default function App() {
+
+  return <Canvas >
+    <CameraControls />
+    <Stars />
+  </Canvas>
 }
