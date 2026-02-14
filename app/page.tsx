@@ -7,7 +7,6 @@ import { CameraControls, Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Leva, useControls } from 'leva'
 
-
 export default function App() {
 
   const { nebulaePositionOne, nebulaePositionTwo } = useControls({
@@ -22,7 +21,7 @@ export default function App() {
   })
 
   return <>
-    <Leva collapsed />
+    <Leva collapsed hidden />
     <Canvas >
       <CameraControls />
       <Stats />
