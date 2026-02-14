@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
-import { AdditiveBlending, DoubleSide, TextureLoader } from "three"
+import { AdditiveBlending, DoubleSide, ShaderMaterial, TextureLoader } from "three"
 import starFragment from './star-shader/star-fragment.glsl'
 import starVertex from './star-shader/star-vertex.glsl'
 
@@ -8,7 +8,7 @@ const MAX_COUNT = 9000 * 10
 
 export const Stars = () => {
 
-    const materialRef = useRef<any>(null)
+    const materialRef = useRef<ShaderMaterial>(null)
 
     useFrame((state) => {
         const { clock } = state

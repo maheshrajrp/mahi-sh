@@ -13,6 +13,7 @@
     "@react-three/fiber": "^9.5.0",
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",
+    "leva": "^0.10.1",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "raw-loader": "^4.0.2",
