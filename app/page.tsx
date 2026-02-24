@@ -1,7 +1,8 @@
 "use client"
 
-import { FaceHud } from '@/components/hud/face-hud'
+import Asteroids from '@/components/asteroids/asteroids'
 import { Nebulae } from '@/components/nebulae/nebulae'
+import { Atom, ProjectBoards } from '@/components/project-boards/project-boards'
 import { Stars } from '@/components/stars/stars'
 import { CameraControls, Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
@@ -22,17 +23,17 @@ export default function App() {
 
   return <>
     <Leva collapsed hidden />
-    <Canvas >
+    <Canvas gl={{ stencil: true }} >
+      <ambientLight intensity={1} />
       <CameraControls />
       <Stats />
-      <mesh >
-        <boxGeometry />
-        <meshNormalMaterial />
-      </mesh>
       <Stars />
       <Nebulae position={nebulaePositionOne} />
-      <Nebulae position={nebulaePositionTwo} />
-      <FaceHud />
+      <Nebulae
+        position={nebulaePositionTwo} />
+      <ProjectBoards />
+      <Atom />
+      <Asteroids />
     </Canvas>
   </>
 }

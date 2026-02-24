@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
-import { AdditiveBlending, DoubleSide, ShaderMaterial, TextureLoader } from "three"
+import { AdditiveBlending, ShaderMaterial, TextureLoader } from "three"
 import starFragment from './star-shader/star-fragment.glsl'
 import starVertex from './star-shader/star-vertex.glsl'
 
@@ -62,7 +62,7 @@ export const Stars = () => {
                 ref={materialRef}
                 vertexShader={starVertex}
                 fragmentShader={starFragment}
-                side={DoubleSide}
+                depthWrite={false}
                 transparent
                 blending={AdditiveBlending}
                 uniforms={uniforms}
