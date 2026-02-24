@@ -52,6 +52,7 @@ export const Nebulae = ({ position = [-1.8, 0.8, 0] }: NebulaeProps) => {
             vertexShader={nebulaeVertex}
             fragmentShader={nebulaeFragment}
             transparent
+            depthWrite={false}
             uniforms={{
                 uPerlinTexture: new THREE.Uniform(perlinTexture),
                 uTime: new THREE.Uniform(0)

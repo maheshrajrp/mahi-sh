@@ -53,7 +53,7 @@ export const Stars = () => {
     }, [])
 
     return <>
-        <points>
+        <points renderOrder={-1}>
             <bufferGeometry>
                 <bufferAttribute attach="attributes-position" args={[points, 3]} />
                 <bufferAttribute attach="attributes-aRandom" args={[aRandom, 1]} />
@@ -63,11 +63,11 @@ export const Stars = () => {
                 vertexShader={starVertex}
                 fragmentShader={starFragment}
                 depthWrite={false}
-                transparent
+                depthTest={true}
+                transparent={false}
                 blending={AdditiveBlending}
                 uniforms={uniforms}
-            >
-            </shaderMaterial>
+            />
         </points>
     </>
 }

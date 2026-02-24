@@ -139,7 +139,6 @@ export default function Asteroids() {
     const data = useMemo(() => buildInstanceData(), [])
     const _color = useMemo(() => new THREE.Color(), [])
 
-    // Seed initial matrices before first render
     useEffect(() => {
         const d = dummy.current
         meshRefs.current.forEach((mesh, gi) => {
@@ -223,11 +222,8 @@ export default function Asteroids() {
     return (
         <>
             <ambientLight intensity={0.15} />
-            {/* Primary sun — steep angle carves out craters */}
             <directionalLight position={[80, 45, 30]} intensity={3.8} color="#fff8e8" />
-            {/* Cool blue rim from behind */}
             <pointLight position={[-40, -20, -30]} intensity={1.4} color="#3355cc" />
-            {/* Faint warm fill */}
             <pointLight position={[0, -50, 0]} intensity={0.6} color="#aa6622" />
             {geometries.map((geo, gi) => (
                 <instancedMesh
