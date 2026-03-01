@@ -73,7 +73,7 @@ function buildAsteroidGeometry(seed: number) {
 }
 
 const N_GEO = 13
-const N_PER_GEO = 1
+const N_PER_GEO = 3
 const TOTAL = N_GEO * N_PER_GEO
 
 const BX = 55, BY = 35, BZ_NEAR = 14, BZ_FAR = -65
