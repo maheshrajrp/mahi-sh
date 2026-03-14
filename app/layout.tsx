@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Footer } from "./footer";
 import "./globals.css";
-import { ThemeToggle } from "./theme-toggle";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased bg-background text-foreground transition-colors`}
       >
-        <ThemeToggle />
+        <Footer />
         {children}
       </body>
     </html>

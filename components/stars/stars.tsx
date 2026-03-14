@@ -32,7 +32,7 @@ export const Stars = () => {
 
     const uniforms = useMemo(() => ({
         uTime: { value: 0 },
-        uTexture: { value: textures[5] }
+        uTextures: { value: textures }
     }), [textures])
 
     const points = useMemo(() => {
@@ -53,11 +53,21 @@ export const Stars = () => {
         return tempArr
     }, [])
 
+    const aTextureIndex = useMemo(() => {
+        const maxCount = MAX_COUNT
+        const tempArr = new Float32Array(maxCount)
+        for (let i = 0; i < maxCount; i++) {
+            tempArr[i] = Math.floor(Math.random() * textures.length)
+        }
+        return tempArr
+    }, [])
+
     return <>
         <points renderOrder={-1}>
             <bufferGeometry>
                 <bufferAttribute attach="attributes-position" args={[points, 3]} />
                 <bufferAttribute attach="attributes-aRandom" args={[aRandom, 1]} />
+                <bufferAttribute attach="attributes-aTextureIndex" args={[aTextureIndex, 1]} />
             </bufferGeometry>
             <shaderMaterial
                 ref={materialRef}

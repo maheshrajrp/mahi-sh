@@ -1,9 +1,10 @@
 uniform float uTime;
 
 attribute float aRandom;
+attribute float aTextureIndex;
 
 varying float vRandom;
-
+varying float vTextureIndex;
 
 void main()
 {
@@ -11,6 +12,7 @@ void main()
     modelPosition.z += aRandom;
 
     vRandom = aRandom;
+    vTextureIndex = aTextureIndex;
 
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;
