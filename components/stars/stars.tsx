@@ -10,7 +10,8 @@ export const Stars = () => {
 
     const materialRef = useRef<ShaderMaterial>(null)
 
-    useFrame((state) => {
+    useFrame((state, delta) => {
+
         const { clock } = state
         if (materialRef.current) {
             materialRef.current.uniforms.uTime.value = clock.getElapsedTime()

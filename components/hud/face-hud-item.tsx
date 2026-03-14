@@ -57,7 +57,6 @@ export const FaceHudItem: React.FC<React.PropsWithChildren<FaceHudItemProps>> = 
             y = margin[1]
     }
 
-    console.log("Position", x, y)
 
     return (
         <group ref={group} position={[x, y, 0]}>

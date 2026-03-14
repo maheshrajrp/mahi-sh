@@ -1,7 +1,7 @@
 import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import * as THREE from 'three';
 import { DoubleSide, Mesh } from "three";
 import nebulaeFragment from './shaders/nebuale-fragment.glsl';
@@ -37,6 +37,14 @@ export const Nebulae = ({ position = [-1.8, 0.8, 0] }: NebulaeProps) => {
         }
     })
 
+    const direction = useMemo(() => {
+        const x = Math.random() * 2 - 1;
+        const y = Math.random() * 2 - 1;
+        const vec = new THREE.Vector2(x, y);
+        vec.normalize();
+        return vec;
+    }, []);
+
     useFrame(({ clock }) => {
         if (!meshRef.current || !shaderMaterialRef.current) return;
         const time = clock.getElapsedTime();
@@ -51,11 +59,12 @@ export const Nebulae = ({ position = [-1.8, 0.8, 0] }: NebulaeProps) => {
             side={DoubleSide}
             vertexShader={nebulaeVertex}
             fragmentShader={nebulaeFragment}
-            transparent
             depthWrite={false}
+            transparent
             uniforms={{
                 uPerlinTexture: new THREE.Uniform(perlinTexture),
-                uTime: new THREE.Uniform(0)
+                uTime: new THREE.Uniform(0),
+                uDirection: new THREE.Uniform(direction)
             }}
         />
     </mesh>

@@ -23,7 +23,7 @@ void main()
     smoke *= smoothstep(1.0, 0.9, vUV.y);
     smoke = max(smoke, 0.0);
     // for now skipping the smoke usage
-    gl_FragColor = vec4(0.439, 0.435, 0.427, smoke);
+    gl_FragColor = vec4(0.1, 0.2, 0.5, smoke);
 
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
