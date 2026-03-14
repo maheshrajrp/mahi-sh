@@ -17,10 +17,19 @@ export const Content = () => {
         const r2 = scroll.range(1 / 4, 1 / 4)
         const r3 = scroll.range(2 / 4, 1 / 4)
         const r4 = scroll.range(3 / 4, 1 / 4)
+
+        const v1 = scroll.visible(0 / 4, 1 / 4)
+        const v2 = scroll.visible(1 / 4, 1 / 4)
+        const v3 = scroll.visible(2 / 4, 1 / 4)
+        const v4 = scroll.visible(3 / 4, 1 / 4)
+
         if (divRef.current) {
             const y = scroll.offset * height
             divRef.current.style.transform = `translateY(${y}px)`
         }
+
+        console.log("Scroll", { offset: scroll.offset, r1, r2, r3, r4, v1, v2, v3, v4 })
+
 
         // Animate camera position based on scroll offset
         state.camera.position.lerpVectors(startPosition, endPosition, scroll.offset)
