@@ -34,10 +34,10 @@ export function WelcomeSection() {
     return (
         <div ref={container} className='absolute top-0 left-0 h-full w-full flex items-center justify-center flex-col'>
             <div className="flex items-center justify-center p-8 max-w-4xl text-center flex-col pointer-events-auto">
-                <span ref={wordRef} className="text-white font-thin text-9xl">
+                <span ref={wordRef} className="text-white font-thin text-6xl lg:text-9xl">
                     {welcomes[currentIndex]}
                 </span>
-                <div className='flex flex-row gap-8 py-8 hover:text-cyan-500 cursor-pointer relative'>
+                <div className='flex text-xs lg:text-xl flex-row gap-8 py-8 hover:text-cyan-500 cursor-pointer relative'>
                     {/* Invisible Content */}
                     <a
                         href='/Maheshraj_Resume_Public.pdf'
