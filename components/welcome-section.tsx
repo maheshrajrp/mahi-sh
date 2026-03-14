@@ -5,8 +5,8 @@ import gsap from 'gsap';
 import { useRef, useState } from 'react';
 
 const welcomes = [
-    "welcome", "வணக்கம் :)", "hola!", "benvenuto", "bienvenue", "willkommen", "ようこそ", "欢迎",
-    "welkom", "bienvenido", "witamy", "välkommen", "환영합니다",
+    "welcome", "வணக்கம்", "स्वागत", "hola!", "benvenuto", "bienvenue", "willkommen", "ようこそ", "欢迎",
+    "welkom", "bienvenido", "witamy", "välkommen", "환영합니다"
 ];
 
 export function WelcomeSection() {
