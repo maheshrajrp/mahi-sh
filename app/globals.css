@@ -4,26 +4,16 @@
   --font-sans: var(--font-inter);
 }
 
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
 }
 
-html.light {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
@@ -39,6 +29,8 @@ body {
   font-style: normal;
 }
 
-html, body, main {
+html,
+body,
+main {
   @apply h-full;
 }
