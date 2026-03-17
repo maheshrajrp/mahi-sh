@@ -1,5 +1,6 @@
 "use client"
 
+import { BLOG_URL } from '@/utils/constants';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef, useState } from 'react';
@@ -59,7 +60,7 @@ export function WelcomeSection() {
 
                     {/* Invisible Content */}
                     <a
-                        href='https://blog.mehi.sh'
+                        href={BLOG_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className='hover:text-red-500 opacity-0 text-white absolute z-50 top-7 left-15 p-1 w-full'
@@ -70,7 +71,6 @@ export function WelcomeSection() {
                         read blog →
                     </a>
                     <a
-
                         className={`text-white  transition-colors relative ${hoveredLink === 'blog' ? 'text-cyan-500! underline' : ''}`}
 
                     >
