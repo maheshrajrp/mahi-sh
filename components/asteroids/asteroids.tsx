@@ -8,7 +8,7 @@ function sr(seed: number) {
 }
 
 function buildAsteroidGeometry(seed: number) {
-    const geo = new THREE.IcosahedronGeometry(1.8, 4)
+    const geo = new THREE.IcosahedronGeometry(1.8, 32)
     const pos = geo.attributes.position
     const count = pos.count
 
@@ -20,7 +20,7 @@ function buildAsteroidGeometry(seed: number) {
     const ey = 0.60 + sr(seed + 4) * 0.65
     const ez = 0.60 + sr(seed + 5) * 0.55
 
-    const craterCount = 4 + Math.floor(sr(seed + 6) * 6)
+    const craterCount = 4 + Math.floor(sr(seed + 1))
     const craters = Array.from({ length: craterCount }, (_, i) => {
         const phi = sr(seed + 10 + i * 3) * Math.PI * 2
         const theta = Math.acos(2 * sr(seed + 11 + i * 3) - 1)
@@ -132,7 +132,7 @@ export default function Asteroids() {
     const dummy = useRef(new THREE.Object3D())
 
     const geometries = useMemo(
-        () => Array.from({ length: N_GEO }, (_, i) => buildAsteroidGeometry(i * 41.3)),
+        () => Array.from({ length: N_GEO }, (_, i) => buildAsteroidGeometry(i * Math.random() * 32)),
         [],
     )
 
@@ -221,10 +221,7 @@ export default function Asteroids() {
 
     return (
         <>
-            <ambientLight intensity={0.15} />
-            <directionalLight position={[80, 45, 30]} intensity={3.8} color="#fff8e8" />
-            <pointLight position={[-40, -20, -30]} intensity={1.4} color="#3355cc" />
-            <pointLight position={[0, -50, 0]} intensity={0.6} color="#aa6622" />
+            <directionalLight position={[80, 45, 30]} intensity={20} color="#fff8e8" />
             {geometries.map((geo, gi) => (
                 <instancedMesh
                     key={gi}

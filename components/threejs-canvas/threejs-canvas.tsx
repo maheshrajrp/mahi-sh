@@ -7,8 +7,8 @@ import { Canvas } from '@react-three/fiber'
 
 export const ThreeJSCanvas = ({ children }: { children?: React.ReactNode }) => {
     return <>
-        <Canvas gl={{ stencil: true }}>
-            <ambientLight intensity={1} />
+        <Canvas gl={{ stencil: true }} camera={{ position: [0, 0, 10] }}>
+            {/* <ambientLight intensity={1} /> */}
             <Stars />
             <ProjectBoards />
             <Asteroids />
