@@ -38,44 +38,46 @@ export function WelcomeSection() {
                 <span ref={wordRef} className="text-white font-thin text-6xl lg:text-9xl">
                     {welcomes[currentIndex]}
                 </span>
-                <div className='flex text-xs lg:text-xl flex-row gap-8 py-8 hover:text-cyan-500 cursor-pointer relative'>
-                    {/* Invisible Content */}
-                    <a
-                        href='/Maheshraj_Resume_Public.pdf'
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className='text-white absolute z-40 top-7 -left-12.5 opacity-0 p-10 w-full hover:text-cyan-500 transition-colors'
-                        onMouseEnter={() => setHoveredLink('resume')}
-                        onMouseLeave={() => setHoveredLink(null)}
-                    >
-                        view resume →
-                    </a>
-                    <a
-                        href='/hello'
-                        className={`text-white  transition-colors relative ${hoveredLink === 'resume' ? 'text-cyan-500! underline' : ''}`}
+                <div className='flex text-xs lg:text-xl flex-row gap-8 py-8 hover:text-cyan-500 cursor-pointer'>
+                    <div className='relative flex'>
+                        {/* Invisible Content */}
+                        <a
+                            href='/Maheshraj_Resume_Public.pdf'
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className='text-red-500 opacity-0 absolute z-40 top-0 left-0 hover:text-cyan-500 transition-colors'
+                            onMouseEnter={() => setHoveredLink('resume')}
+                            onMouseLeave={() => setHoveredLink(null)}
+                        >
+                            view resume →
+                        </a>
+                        <a
+                            href='/hello'
+                            className={`text-white  transition-colors relative ${hoveredLink === 'resume' ? 'text-cyan-500! underline' : ''}`}
 
-                    >
-                        view resume →
-                    </a>
+                        >
+                            view resume →
+                        </a>
+                    </div>
+                    <div className='relative flex'>
+                        {/* Invisible Content */}
+                        <a
+                            href={BLOG_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className='text-red-500 opacity-0 absolute z-50 top-0 left-0'
+                            onMouseEnter={() => setHoveredLink('blog')}
+                            onMouseLeave={() => setHoveredLink(null)}
+                        >
+                            read blog →
+                        </a>
+                        <a
+                            className={`text-white  transition-colors relative ${hoveredLink === 'blog' ? 'text-cyan-500! underline' : ''}`}
 
-                    {/* Invisible Content */}
-                    <a
-                        href={BLOG_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className='hover:text-red-500 opacity-0 text-white absolute z-50 top-7 left-15 p-1 w-full'
-                        onMouseEnter={() => setHoveredLink('blog')}
-                        onMouseLeave={() => setHoveredLink(null)}
-
-                    >
-                        read blog →
-                    </a>
-                    <a
-                        className={`text-white  transition-colors relative ${hoveredLink === 'blog' ? 'text-cyan-500! underline' : ''}`}
-
-                    >
-                        read blog →
-                    </a>
+                        >
+                            read blog →
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
