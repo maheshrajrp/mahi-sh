@@ -1,1 +1,1 @@
-export const BLOG_URL = 'https://a-blog-chi.vercel.app/'
+export const BLOG_URL = 'https://hey.mah3.sh/'
